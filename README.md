@@ -15,4 +15,4 @@ To use, create .env file at root with the following information:
 
 After your .env file is setup:
 - Run `python open_ai_usage.py` to get the users in your org and then download their data for specified date_range OR yesterday
-- Run `pythong open_ai_analysis.py` to clean up the usage data, attach cost values, and plot per user costs
+- Run `python open_ai_analysis.py` to clean up the usage data, attach cost values, and plot per user costs
