@@ -14,5 +14,5 @@ To use, create .env file at root with the following information:
 - `date_range` - list of text strings for dates to get usage from in the format of `YYYY-MM-DD` *optional*
 
 After your .env file is setup:
-- Run `python open_ai_usage.py` to get the users in your org and then download their data for specified date_range OR yesterday
-- Run `python open_ai_analysis.py` to clean up the usage data, attach cost values, and plot per user costs
+- Run `python openai_usage.py` to get the users in your org and then download their data for specified date_range OR yesterday
+- Run `python openai_analysis.py` to clean up the usage data, attach cost values, and plot per user costs
