@@ -8,6 +8,10 @@ from openai_model_costs import model_map_cost_per_1k
 load_dotenv()
 data_dir = os.getenv('data_dir')
 finetune_models = os.getenv('finetune_models')
+if finetune_models:
+    finetune_models = eval(finetune_models)
+else:
+    finetune_models = []
 usage_path = os.path.join(data_dir, "openai_usage.csv")
 
 

@@ -22,6 +22,9 @@ date_list = os.getenv("date_range")
 if date_list is None:
     yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
     date_list = [yesterday.strftime("%Y-%m-%d")]
+else:
+    date_list = eval(date_list)
+
 
 member_csv = os.path.join(data_dir, "openai_members.csv")
 usage_csv = os.path.join(data_dir, "openai_usage.csv")
@@ -33,7 +36,7 @@ openai_api_key = os.getenv("openai_api_key")
 def get_members():
     _header1 = {"Authorization": "Bearer {}".format(openai_api_key)}
     _users = s.get("https://api.openai.com/v1/organizations/{}/users".format(openai_org_id),
-                  headers=_header1)
+                   headers=_header1)
     _user_data = json.loads(_users.text)
 
     _member_list = [["userName", "userId", "userRole"]]
@@ -100,11 +103,11 @@ def get_and_write_usage(_members=None, from_file=False):
 
 
 def main():
-    members = get_members()
-    write_members(members)
-    get_and_write_usage(members)
+    # members = get_members()
+    # write_members(members)
+    # get_and_write_usage(members)
     # # alternatively if you already queried members (and don't expect changes) # #
-    # get_and_write_usage(from_file=True)
+    get_and_write_usage(from_file=True)
 
 
 if __name__ == "__main__":
