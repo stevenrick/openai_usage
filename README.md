@@ -17,4 +17,4 @@ After your .env file is setup:
 - Run `python openai_usage.py` to get the users in your org and then download their data for specified date_range OR yesterday
 - Run `python openai_analysis.py` to clean up the usage data, attach cost values, and plot per user costs
 
-Credit to [this thread](https://community.openai.com/t/how-to-track-individual-usage/15935/34) for kickstarting the process of exposing the less well documented OpenAI API usage endpoints.
+Credit to [this thread](https://community.openai.com/t/how-to-track-individual-usage/15935) for kickstarting the process of exposing the less well documented OpenAI API usage endpoints.
