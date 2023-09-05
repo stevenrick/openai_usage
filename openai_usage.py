@@ -1,6 +1,7 @@
 import os
 import csv
 import json
+import pandas as pd
 import requests
 import datetime
 from requests.adapters import HTTPAdapter, Retry
@@ -56,6 +57,7 @@ def write_members(_member_list):
     with open(member_csv, "w") as _csv_file:
         _csv_writer = csv.writer(_csv_file)
         _csv_writer.writerows(_member_list)
+    return
 
 
 def get_and_write_usage(_members=None, from_file=False):
@@ -100,6 +102,14 @@ def get_and_write_usage(_members=None, from_file=False):
                                      _batch["n_context_tokens_total"],
                                      _batch["n_generated_tokens_total"]]
                         _csv_writer2.writerow(_out_data)
+    return
+
+
+def sort_usage():
+    df = pd.read_csv(usage_csv)
+    df.sort_values(by=['date', 'username'], ascending=[False, True])
+    df.to_csv(path_or_buf=os.path.join(data_dir, "openai_usage_sorted.csv"), index=False)
+    return
 
 
 def main():
@@ -108,6 +118,8 @@ def main():
     # get_and_write_usage(members)
     # # alternatively if you already queried members (and don't expect changes) # #
     get_and_write_usage(from_file=True)
+    # # optional functions
+    sort_usage()
 
 
 if __name__ == "__main__":
